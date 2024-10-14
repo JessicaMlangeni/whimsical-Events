@@ -1,0 +1,122 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Verification</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #233142;
+        color: #e3e3e3;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        background-color: #455d7a;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        max-width: 400px;
+        width: 100%;
+      }
+      h1 {
+        text-align: center;
+      }
+      form {
+        margin-top: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      input[type="text"], input[type="password"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 5px;
+      }
+      input[type="submit"] {
+        background-color: #b80257;
+        color: #e3e3e3;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        width: 100%;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #f95959;
+      }
+      .receipt {
+        display: none;
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #301b1b;
+        border-radius: 5px;
+      }
+      .receipt p {
+        margin: 5px 0;
+      }
+      .receipt-button {
+        background-color: #b80257;
+        color: #e3e3e3;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        width: 100%;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      .receipt-button:hover {
+        background-color: #f95959;
+      }
+    </style>
+    </head>
+    <body>
+    
+    <div class="container">
+      <h1>Payment Verification</h1>
+      <form id="paymentForm">
+        <label for="cardNumber">Card Number</label>
+        <input type="text" id="cardNumber" placeholder="Enter 16 digit card number" required>
+        <label for="cvv">CVV</label>
+        <input type="password" id="cvv" placeholder="Enter 3 digit CVV" required>
+        <input type="submit" value="Verify Payment">
+      </form>
+      <div class="receipt" id="receipt">
+        <p><strong>Payment Sender:</strong> John Doe</p>
+        <p><strong>Purpose of Payment:</strong> Product Purchase</p>
+        <p><strong>Amount:</strong> $100</p>
+        <p><strong>Date:</strong> January 29, 2024</p>
+        <button class="receipt-button" onclick="printReceipt()">Get Receipt</button>
+      </div>
+    </div>
+    
+    <script>
+      function printReceipt() {
+        var receipt = document.getElementById("receipt");
+        receipt.style.display = "block";
+        window.print();
+        receipt.style.display = "none";
+      }
+    
+      document.getElementById("paymentForm").addEventListener("submit", function(event){
+        event.preventDefault();
+        // Dummy validation, replace with actual validation logic
+        var cardNumber = document.getElementById("cardNumber").value;
+        var cvv = document.getElementById("cvv").value;
+        if(cardNumber.length === 16 && cvv.length === 3) {
+          document.getElementById("receipt").style.display = "block";
+        } else {
+          alert("Invalid card number or CVV!");
+        }
+      });
+    </script>
+    </body>
+    
+    
