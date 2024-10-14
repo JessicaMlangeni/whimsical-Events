@@ -1,475 +1,65 @@
-
-
-body, html {
-  font-family: "Gotham";
-  margin: 0;
-  background-color: #eaeaec;
-}
-
 * {
-  box-sizing: border-box;
-}
-
-*:focus, *:active {
-  outline: 0;
-}
-
-header {
-  font-size: 26px;
-  font-weight: 600;
-  text-align: center;
-  background-image: linear-gradient(to right, #17a3fa, #bf5efb);
-  border-radius: 20px 20px 0 0;
-  padding: 20px 25px;
-  color: white;
-}
-
-nav {
-  display: flex;
-  width: 435px;
-  max-width: calc(100% - 90px);
-  margin: 40px auto 0;
-  align-items: center;
-
-  > div {
-    flex: 0 0 auto;
-    position: relative;
-    width: 30px;
-    height: 30px;
-    background-color: $lightblue;
-    padding: 10px;
-    border-radius: 50%;
-    
-    label {
-      position: absolute;
-      z-index: 1;
-      top: 4px;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
-      font-size: 36px;
-      color: #000000;
-      text-align: center;
-    }
-    
-    &.active label,
-    &.complete label {
-      color: white;
-    }
-    
-    label:after {
-      content: 'Registration';
-      display: block;
-      position: absolute;
-      top: 76px;
-      left: -48px;
-      font-size: 15px;
-      color: black;
-      width: 150px;
-      text-align: center;
-      font-weight: 300;
-    }
-    
-    &.active label:after {
-      font-weight: 400;
-    }
-    
-    &:nth-of-type(2) label:after {
-      content: 'Ticket Selection';
-    }
-    
-    &:last-of-type label:after {
-      content: 'Payment';
-    }
-  }
-
-  > hr {
-    flex: 0 0 calc(50% - 79.5px);
-    border: 0;
-    border: none;
-    height: 8px;
-    background-color: white;
-    vertical-align: middle;
-  }
-}
-
-section {
-  width: 100%;
-  display: block;
-  text-align: center;
-  padding: 5px 0;
-  background-color: white;
-}
-
-article {
-  width: 475px;
-  max-width: calc(100% - 30px);
-  margin: 60px auto 0;
-
-  h1 {
-    margin-top: 0;
-    font-size: 19px;
-  }
-
-  [type="text"],
-  [type="email"],
-  [type="date"],
-  [type="number"],
-  select {
-    font-size: 19px;
-    font-family: "Gotham";
-    font-weight: 300;
-    width: 100%;
-    padding: 15px 20px;
     box-sizing: border-box;
-    margin-bottom: 15px;
-    border: 0;
-    border-radius: 0;
-    -webkit-appearance: none;
-    appearance: none;
-  }
-
-  [type="checkbox"] {
-    display: none;
-
-    &:checked + label:after {
-      position: absolute;
-      content: "";
-      width: 8px;
-      height: 14px;
-      border-bottom: 3px solid $lightblue;
-      border-right: 3px solid $lightblue;
-      display: block;
-      left: -37px;
-      top: 7px;
-      transform: rotate(45deg);
-    }
-
-    + label {
-      display: block;
-      position: relative;
-      font-size: 19px;
-      font-weight: 300;
-      cursor: pointer;
-      text-indent: -50px;
-      margin-left: 50px;
-      
-      &:before {
-        content: "";
-        display: inline-block;
-        background-color: white;
-        width: 36px;
-        height: 36px;
-        vertical-align: middle;
-        margin-right: 15px;
-      }
-    }
-  }
-  
-  [type="submit"], button {
-    border: 0;
-    background: #17A3FA;
-    color: white;
-    font-family: 'Gotham';
-    font-size: 17px;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 25px 55px;
-    border-radius: 40px;
-    margin: 40px auto;
-    display: block;
-    -webkit-appearance: none;
-    appearance: none;
-    cursor: pointer;
-    transition: 0.2s background;
-    
-    &.btn-green {
-      background-color: #4BC88E;
-    }
-    
-    &:hover {
-      background-color: #0089de;
-    }
-  }
-
-  .tkt-cell {
-    background: white;
-    padding: 14px 23px;
-    margin-bottom: 14px;
-    
-    .col-8, .col-4 {
-      display: inline-block;
-      float: left;
-    }
-    
-    .col-8 {
-      width: 66.67%;
-    }
-    
-    .col-4 {
-      width: 33.33%;
-      text-align: right;
-      
-      button {
-        display: inline-block;
-        width: 29px;
-        height: 29px;
-        padding: 4px;
-        border-radius: 7px;
-        margin: 12px 0 0;
-      }
-      
-      label {
-        margin: 0 8px;
-      }
-    }
-    
-    h2 {
-      font-size: 17px;
-      margin: 0 0 4px;
-    }
-    
-    p {
-      margin: 0;
-      font-size: 13px;
-    }
-    
-    &:after {
-      content: '';
-      clear: both;
-      display: block;
-    }
-  }
-  
-  table {
-    width: 100%;
-    
-    th {
-      background-color: #D6D6D6;
-      font-size: 17px;
-      font-weight: 300;
-      text-align: left;
-      padding: 10px 15px;
-      
-      &:last-of-type {
-        text-align: right;
-      }
-    }
-    
-    tr {
-      
-      &:last-of-type td {
-        padding-bottom: 10px;
-      }
-      
-      td {
-        background-color: white;
-        padding: 10px 15px 0;      
-      
-        &:last-of-type {
-          text-align: right;
-        }
-      }
-    }
-  }
-  
-  .total {
-    text-align: right;
-    font-weight: 300;
-    padding: 15px;
-    margin-bottom: 10px;    
-    
-    span {
-      font-weight: 400;
-      margin-left: 10px;
-    }
-  }
-  
-  .card-container {
-    width: 466px;
-    height: (267 / 466) * 93vw;
-    max-height: 267px;
-    background-image: url('https://www.sproutix.com.au/images/ccbg.svg');
-    display: block;
-    margin: 0 auto 20px;
-    padding: 20px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    max-width: 100%;
-    padding-top: 9%;
-    
-    label {
-      color: white;
-      font-weight: 300;
-      padding-bottom: 7px;
-      float: left;
-      
-      @media screen and (max-width: 425px) { font-size: 13px; }
-    }
-    
-    .col-8 {
-      width: 66.67%;
-      float: left;
-      padding-right: 5px;
-    }
-    
-    .col-4 {
-      width: 33.33%;
-      float: right;
-      padding-left: 5px;
-    }
-    
-    input[type="text"] {
-      background-color: rgba(255, 255, 255, 0.2);
-      color: white;
-      font-weight: 700;
-      
-      @media screen and (max-width: 425px) {
-        padding: 10px;
-      }
-      
-      @media screen and (max-width: 455px) {
-        font-size: 14px;
-      }
-    }
-  }
 }
 
-.col-10 { width: 83.33%; }
-.col-2 { width: 16.67%; }
-
-footer {
-  .col-10, .col-2{
-	  display: inline-block;
-  	float: left;	
-  }
-  
-  .col-2 { float: right; }
-}
-
-.select-session-block > select {
-    font-size: 15px;
-    font-weight: 400;
-    background-image: url(https://www.sproutsystems.com.au/images/down.svg);
-    background-repeat: no-repeat;
-    background-position: calc(100% - 15px) 17px;
-}
-
-.session-group {
-    background: #e2e2e2;
-    padding: 20px 20px 0;
-    margin-bottom: 10px;
-
-	h3 {
-		margin-top: 0;
-	}
-
-	p {
-		margin-bottom: 0;
-	}
-}
-
-// --- Custom Styles ---
-nav {
-    margin: 15px auto;
-  
-  > div {
-    position: relative;
-    display: inline-block;
-    width: 53px;
-    height: 92px;
-    border-radius: 10px/ 5px;
-    cursor: pointer;
-    background: white;
-    background-size: 133%;
-    transform: rotate(90deg) scale(0.7);
-    top: 0;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
     padding: 0;
-    
-    label {
-      transform: rotate(-90deg);
-      margin-top: 23px;
-    
-      &:after {
-        font-size: 23px;
-        width: 190px;
-        margin-left: -18px;
-      }
-    }
-
-    &:before,
-    &:after {
-      position: absolute;
-      width: inherit;
-      height: inherit;
-      border-radius: inherit;
-      background: inherit;
-      content: "";
-      background-size: 160%;
-    }
-
-    &:before {
-      transform: rotate(60deg);
-    }
-
-    &:after {
-      transform: rotate(-60deg);
-    }
-
-    &.active,
-    &.complete {
-      background: none;
-      background-image: linear-gradient(0deg, #17a3fa, #bf5efb);
-
-      &:before {
-        background-image: linear-gradient(-60deg, #17a3fa, #bf5efb);
-        background-size: 107%;
-      }
-
-      &:after {
-        background-image: linear-gradient(60deg, #17a3fa, #bf5efb);
-        background-size: 100%;
-      }
-    }
-  }
-
-  .active + hr {
-    background-image: linear-gradient(to right, #bf5efb 10%, #ffffff 80%);
-  }
-
-  .complete + hr {
-    background-image: linear-gradient(to right, #bf5efb 10%, #17a3fa 80%);
-  }
+    background-color: #f4f4f4;
 }
 
-article {
-  margin: 35px auto 0;
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-@media screen and (max-width: 420px) {
-  header {
-    font-size: 25px;
-  }
-  
-  nav {
-    max-width: calc(100% - 50px);
-  }
-  
-  nav, article {
-    margin-top: 10px;
-  }
-  
-  nav > div {
-    transform: scale(0.6) rotate(90deg);
-    
-    label:after {
-      font-size: 19px;
-      width: 170px;
-      margin-left: -10px;
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.ticket-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket-form label {
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.ticket-form input, 
+.ticket-form select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.ticket-form button {
+    padding: 10px;
+    background-color: #9f239b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.ticket-form button:hover {
+    background-color: #9f239b;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
     }
-  }
-  
-  article [type="checkbox"] + label {
-    font-size: 15px;
-  }
+
+    .ticket-form {
+        width: 100%;
+    }
 }
